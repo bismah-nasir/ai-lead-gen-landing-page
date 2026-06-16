@@ -16,7 +16,6 @@ const PortfolioCard = ({ project, index }) => {
             }}>
             <div className="h-48 relative overflow-hidden">
                 <img
-                    // src="https://readdy.ai/api/search-image?query=Modern%20clean%20workspace%20with%20laptop%20showing%20dashboard%20interface%2C%20minimal%20design%20aesthetic%2C%20warm%20natural%20light%2C%20professional%20creative%20environment%2C%20geometric%20decor%2C%20plants%2C%20soft%20ambient%20lighting%2C%20premium%20photography%20style%2C%20no%20people%2C%20clean%20composition&width=800&height=500&seq=portfolio-card-1-codecelix&orientation=landscape"
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover object-top"
