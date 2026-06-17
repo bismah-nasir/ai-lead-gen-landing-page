@@ -14,6 +14,7 @@ export default {
 
                 accent: {
                     DEFAULT: "#10B981", // Green color
+                    alt: "#059669",
                 },
 
                 gray: {
