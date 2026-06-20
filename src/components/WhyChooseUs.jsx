@@ -30,7 +30,7 @@ const features = [
 
 const WhyChooseUs = () => {
     return (
-        <section className="py-20 md:py-28 bg-background font-body">
+        <section className="py-20 md:py-28 bg-background">
             <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
                     {/* Left Content */}

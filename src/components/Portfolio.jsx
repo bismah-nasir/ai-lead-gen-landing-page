@@ -48,7 +48,7 @@ const portfolioData = [
 
 const Portfolio = () => {
     return (
-        <section className="py-20 md:py-28 bg-background-alt">
+        <section id="portfolio" className="py-20 md:py-28 bg-background-alt">
             <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <motion.div
                     className="text-center mb-16"
