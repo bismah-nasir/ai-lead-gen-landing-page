@@ -63,14 +63,18 @@ const Portfolio = () => {
                         Real Results from{" "}
                         <span className="text-secondary">Real Projects</span>
                     </h2>
-                    <p class="text-gray-alt max-w-2xl mx-auto text-base md:text-lg">
+                    <p className="text-gray-alt max-w-2xl mx-auto text-base md:text-lg">
                         See how we've helped businesses transform their digital
                         presence and achieve remarkable growth.
                     </p>
                 </motion.div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {portfolioData.map((project, index) => (
-                        <PortfolioCard project={project} index={index} />
+                        <PortfolioCard
+                            key={project.title}
+                            project={project}
+                            index={index}
+                        />
                     ))}
                 </div>
             </div>

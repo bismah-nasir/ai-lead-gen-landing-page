@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Code2, Menu, X } from "lucide-react";
 
@@ -13,10 +13,29 @@ const navLinks = [
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     return (
         <motion.nav
-            className="fixed top-0 left-0 right-0 z-50 py-5 bg-black" // This bg-black is only for checking purpose, the real class is bg-transparent
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                scrolled
+                    ? "py-3 bg-background/70 backdrop-blur-md shadow-sm"
+                    : isOpen
+                      ? "py-5 bg-background/30 backdrop-blur-md"
+                      : "py-5 bg-transparent"
+            }`}
             initial={{ y: -80 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}>
@@ -27,7 +46,11 @@ const Navbar = () => {
                         <Code2 className="w-6 h-6 text-white" />
                     </div>
 
-                    <span className="text-xl font-bold font-heading whitespace-nowrap text-white">
+                    <span
+                        className={`text-xl font-bold font-heading whitespace-nowrap transition-colors ${
+                            scrolled ? "text-dark" : "text-white"
+                        }`}>
+                        {" "}
                         Codecelix
                     </span>
                 </a>
@@ -38,7 +61,11 @@ const Navbar = () => {
                         <a
                             key={link.label}
                             href={link.href}
-                            className="text-sm font-medium text-white/80 hover:text-white transition-colors duration-200">
+                            className={`text-sm font-medium transition-colors duration-200 ${
+                                scrolled
+                                    ? "text-gray hover:text-dark"
+                                    : "text-white/80 hover:text-white"
+                            }`}>
                             {link.label}
                         </a>
                     ))}
@@ -55,7 +82,9 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="lg:hidden w-10 h-10 flex items-center justify-center text-white"
+                    className={`lg:hidden w-10 h-10 flex items-center justify-center transition-colors ${
+                        scrolled ? "text-gray" : "text-white"
+                    }`}
                     onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? (
                         <X className="w-6 h-6" />
@@ -71,14 +100,19 @@ const Navbar = () => {
                     initial={{ opacity: 0, y: -15 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
-                    className="lg:hidden mt-4 mx-4 rounded-2xl bg-gray p-6 shadow-lg">
+                    className="lg:hidden p-6">
                     <div className="flex flex-col gap-4">
                         {navLinks.map((link) => (
                             <a
                                 key={link.label}
                                 href={link.href}
                                 onClick={() => setIsOpen(false)}
-                                className="text-white/80 hover:text-white transition-colors">
+                                // className="text-gray/80 hover:text-gary-alt transition-colors"
+                                className={`transition-colors ${
+                                    scrolled
+                                        ? "text-gray/80 hover:text-gary-alt"
+                                        : "text-white"
+                                }`}>
                                 {link.label}
                             </a>
                         ))}
