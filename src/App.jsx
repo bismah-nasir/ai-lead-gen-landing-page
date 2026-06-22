@@ -3,8 +3,9 @@ import Hero from "./components/Hero";
 import Services from "./components/Services";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Portfolio from "./components/Portfolio";
-import FinalCTA from "./components/FinalCTA";
 import Testimonials from "./components/Testimonials";
+import FinalCTA from "./components/FinalCTA";
+import FAQ from "./components/FAQ";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
             <WhyChooseUs />
             <Portfolio />
             <Testimonials />
+            <FAQ />
             <FinalCTA />
         </div>
     );
